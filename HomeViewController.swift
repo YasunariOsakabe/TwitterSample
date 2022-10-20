@@ -17,7 +17,6 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy年MM月dd日", options: 0, locale: Locale(identifier:  "ja_JP"))
         dateFormatter.dateStyle = .long
-        //        dateFormatter.timeStyle = .short
         return dateFormatter
     }
     
@@ -30,7 +29,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         //↑このコードでHomeTableViewCellを登録してるイメージ
         
-        self.tableView.estimatedRowHeight = 1000  //セルの高さを可変r
+        self.tableView.estimatedRowHeight = 1000  //セルの高さを可変
         self.tableView.rowHeight = UITableView.automaticDimension
         
         //ナビゲーションバーにツイッターアイコンを表示
@@ -80,8 +79,6 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tweetDeta = Array(result)
         print("データ取得しました")
     }
-    
-    
 }
 
 
