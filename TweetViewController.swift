@@ -39,8 +39,6 @@ class TweetViewController: UIViewController,UITextViewDelegate {
     
     var toolBar: UIToolbar {
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-        //        let toolBarRect = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35) 上記の一文と同じ処理
-        //        let toolBar = UIToolbar(frame: toolBarRect)
         let commitButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(tapDoneButton))
         toolBar.items = [commitButton] //toolBarには複数のコンポーネントが格納できるため配列形式で記述する
         return toolBar
@@ -59,7 +57,7 @@ class TweetViewController: UIViewController,UITextViewDelegate {
         tweetAddButton.layer.cornerRadius = 5
     }
     
-//    データ保存メソッド（内容を上書きしつつ、データ保存) ,文字数制限も追加（ツイート文が140字以上の場合はデータ保存されないように）
+    //    データ保存メソッド（内容を上書きしつつ、データ保存) ,文字数制限も追加（ツイート文が140字以上の場合はデータ保存されないように）
     func saveRecord(with name: String, with text: String) {
         let realm = try! Realm()
         let tweetTextCount = inputTweetText.text.count
@@ -72,46 +70,22 @@ class TweetViewController: UIViewController,UITextViewDelegate {
                 record.name = name
                 record.recordDate = Date()
                 realm.add(record)
-        }
-
-//    //ユニットテスト用
-//    func saveRecord(with name: String, with text: String) -> Bool {
-//        let tweetTextCount = inputTweetText.text.count
-//        if tweetTextCount > maxTweetLength {
-//           return true
-//        } else {
-//            return false
-//        }
+            }
             
-        print("ユーザー名:\(record.name),ツイート文:\(record.text),日付: \(record.recordDate)")
-        dismiss(animated: true)
-    }
+            print("ユーザー名:\(record.name),ツイート文:\(record.text),日付: \(record.recordDate)")
+            dismiss(animated: true)
+        }
     }
     
     //ホーム画面へ戻る
     func transitionToHomeView() {
         dismiss(animated: true, completion: nil)
-        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)  //Storyboardをインスタンス化し、コード上でストーリーボードを使えるようにする
-        //        guard let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return } //instantiateViewControllerメソッドを使ってTweetViewControllerもインスタンス化
-        //        present(homeViewController, animated: true) //presentメソッドで画面遷移
     }
     
     func tweerCancel() {
         dismiss(animated: true, completion: nil)
     }
-        
-//    internal func textViewDidChangeSelection(_ textView: UITextView) {
-//            guard let tweetTetxCount = inputTweetText.text else { return }
-//
-//                if tweetTetxCount.count > maxTweetLength {
-//
-//                    // 最大文字数超えた場合は切り捨て
-//                    inputTweetText.text = String(tweetTetxCount.prefix(maxTweetLength))
-//
-//                    //inputTweetText.textの文字数がmaxTweetLengthを超える場合は、
-//                    //それ以降の文字を切り捨てたものをinputTweetText.textに代入しています。
-//        }
-//    }
+    
 }
 
 
