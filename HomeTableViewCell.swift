@@ -2,8 +2,8 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var dateTextLabel: UILabel!
+    @IBOutlet weak var tweetTextlabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
