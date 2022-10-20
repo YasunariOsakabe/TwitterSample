@@ -10,8 +10,8 @@ import RealmSwift
 
 class TweetDetaModel: Object {
     override static func primaryKey() -> String {
-            return "id"
-        }
+        return "id"
+    }
     @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var name: String = ""
     @objc dynamic var recordDate: Date = Date()
